@@ -100,6 +100,7 @@ L = len(sample)
 print(L)
  
 #example haar integral approximation
+#let's find the integral of UXU* with wrespect to dU
 d = 2
 distribution = haar_distribution(d)
 burn_in = .2
@@ -113,6 +114,8 @@ for U in sample:
 integral = (1/size)*integral
 error = 0
 print(integral)
+
+### now let's look at the error of our approximation
 I = np.identity(2)
 for i in range(2):
     for j in range(2):
