@@ -32,24 +32,4 @@ def construct_unitary(d,Lambda):
   U=np.matmul(U,prod_of_exp_of_P)
 
   return U
-  
-######### probability stuff 
-def a(d,v,w):
-  M = [1,haar_density(d,w)/haar_density(d,v)]
-  return min(M)
-
-def coin(p):
-  return np.random.binomial(1,p)
-
-def proposal(d):
-  P = np.zeros((d,d))
-  for M in range(d):
-    for N in range(d):
-      if M<N:
-        P[M,N]=np.random.uniform()*pi/2
-      elif M==N:
-        P[N,M]=np.random.uniform()*pi*2
-      else:
-        P[M,N]=np.random.uniform()*pi
-  
-  return P
+ 
