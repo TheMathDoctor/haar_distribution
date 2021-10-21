@@ -5,7 +5,8 @@ class haar_distribution:
 
   def __init__(self,dimension):
     self.dimension = dimension #Dimension of the vector space on which the unitaries act
-
+  #unnormalized haar density. 
+  #Lambda is a dxd matrix of values between 0 and 2pi
   def density(self,Lambda):
     d = self.dimension
     value = 1
@@ -14,6 +15,7 @@ class haar_distribution:
         value = value*np.sin(Lambda[M,N])*(np.cos(Lambda[M,N]))**(2*(N-M)-1)
     return value
   
+  #normalized haar density
   def normalized_density(self,Lambda):
     d = self.dimension
     numerator = (2*pi)**(d*(d+1)*.5)
@@ -24,7 +26,7 @@ class haar_distribution:
     
     normalization_constant = numerator/denominator
     return self.density(Lambda)/normalization_constant
-  
+  #generates a sample of approximately uniformly distributed unitaries 
   def generate_sample(self,size, burn_in):
     #burn_in is expected to be a positive number less than 1. Usual is around .2. 
     iterations = int(size/(1-burn_in))
