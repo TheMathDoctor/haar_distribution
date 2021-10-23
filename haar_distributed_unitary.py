@@ -140,7 +140,7 @@ L = len(sample)
 print(L)
  
 #example haar integral approximation
-#let's find the integral of UXU* with wrespect to dU
+#let's find the integral of UXU* with respect to dU
 d = 2
 distribution = haar_distribution(d)
 burn_in = .2
