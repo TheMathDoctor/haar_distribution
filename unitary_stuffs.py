@@ -1,6 +1,8 @@
 import numpy as np
 #parametrization taken from https://arxiv.org/pdf/1103.3408.pdf
 #This code constructs a unitary matrix from a dxd matrix of parameters
+
+#computes the adjoint of a matrix
 pi = np.pi
 def adj(x):
   return np.transpose(np.conjugate(x))
