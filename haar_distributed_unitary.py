@@ -2,7 +2,26 @@ import unitary_stuffs as u
 import numpy as np
 pi = np.pi
 class haar_distribution:
-
+  """ 
+  A class used to represent the Haar distribution on the unitary group U(d).
+  
+  ...
+  
+  Attributes
+  ----------
+  
+  dimension: int
+    The dimension of the space on which the unitaries act. 
+    
+  Methods
+  -------
+  density(arr: Lambda) --> float
+    The unnormalized Haar density function. Lambda is expected to be a d by d matrix of parameters between 0 and 2pi.
+    The unnormalized density is intended for use in the Metropolis Hastings sampling as the addition of a normalization
+    constant would only increase computation complexity.
+    
+  normalized_density(arr: Lambda) --> float
+  """
   def __init__(self,dimension):
     self.dimension = dimension #Dimension of the vector space on which the unitaries act
   #unnormalized haar density. 
