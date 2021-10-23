@@ -18,9 +18,30 @@ class haar_distribution:
   density(arr: Lambda) --> float
     The unnormalized Haar density function. Lambda is expected to be a d by d matrix of parameters between 0 and 2pi.
     The unnormalized density is intended for use in the Metropolis Hastings sampling as the addition of a normalization
-    constant would only increase computation complexity.
+    constant would only increase computation complexity. This is supplied so that the user may employ a sampling method 
+    other than Metropolis Hastings.
     
   normalized_density(arr: Lambda) --> float
+    THe normalized Haar density function. Lambda is expected to be a d by d matrix of parameters between 0 and 2pi.
+    
+  generate_sample(int: size, float: burn_in) --> arr
+    Generates a sample of approximately Haar distributed uniatry matrices.  Size is the size of the sample produced.
+    burn_in is the percent of initial states discarded in the markov chain produced by Metropolis Hastings. burn_in 
+    is expected to be between 0 and 1. A common choice is .2. This will discard the first 20% percent of the markov 
+    chain the markov chain. A higher value of burn_in will produced more accurate results, but will greatly increase
+    the computational complexity.
+    
+  a(arr: v, arr: w) --> float
+    The acceptance probability needed to choose states in the markov chain generated in Metropolis Hastings. The user
+    does not need to access this method directly.
+    
+  proposal(int: d) --> arr
+    Proposes the next state in the markov chain in Metropolis Hastings. The user does not need to access this method
+    directly.
+    
+  coin(float: p) --> int
+    A simple binomial coin. Used in the Metropolis Hastings algorithm. The user does not need to access this method 
+    directly.
   """
   def __init__(self,dimension):
     self.dimension = dimension #Dimension of the vector space on which the unitaries act
